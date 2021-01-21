@@ -14,5 +14,5 @@ def get_stock_info(ticker):
 
 
 def get_historical_data(ticker, startdate, enddate):
-    hist = ticker.history(period="1y")
+    hist = si.get_data(ticker, start_date=startdate, end_date=enddate, interval="1d")
     return hist
