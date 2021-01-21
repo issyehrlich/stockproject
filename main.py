@@ -12,21 +12,34 @@ START_DATE = "01/01/2020"
 END_DATE = "12/31/2020"
 TICKER = "RDSA.AS"
 
+
 def main():
     ticker = dg.set_as_ticker(TICKER)
     stock_info = get_relevant_info(ticker)
     historical_data = dg.get_historical_data(ticker.ticker, START_DATE, END_DATE)
-    plot_data(historical_data["adjclose"])
-    indicators = indic.build_indicators(historical_data["adjclose"])
+    clean_data = clean_dataset(historical_data)
+    plot_data(clean_data["adjclose"])
+    indicators = indic.build_indicators(clean_data)
 
-    print(historical_data)
+    print(clean_data)
     print(stock_info)
+
+def clean_dataset(dataset):
+    """
+    remove unwanted data from the dataframe
+    :param dataset:
+    :return:
+    """
+    dataset = dataset.dropna()
+    return dataset
+
+
+
 
 def plot_data(dataset):
     fig, ax1 = plt.subplots()
     ax1.plot(dataset)
     plt.show()
-
 
 
 def get_relevant_info(ticker):
