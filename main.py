@@ -14,7 +14,8 @@ START_DATE = "01/01/2020"
 END_DATE = "12/31/2020"
 TICKER = "GSP"
 
-
+logging.basicConfig(level=logging.DEBUG,
+                    format="%(asctime)s,")
 def main():
     snp = asset_index("^GSPC", "INDEX")
     apple = asset_stock("APPL", "STOCK")
