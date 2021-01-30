@@ -1,9 +1,10 @@
-import pandas as pd
+import math
 import time
+
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 import getdatafromyahoo as dg
-import math
 import indictors as indic
 import trading as trd
 
@@ -64,9 +65,6 @@ def clean_dataset(dataset):
     """
     dataset = dataset.dropna()
     return dataset
-
-
-
 
 def plot_data(dataset):
     fig, ax1 = plt.subplots()
