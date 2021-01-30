@@ -8,7 +8,6 @@ def set_as_ticker(stock_name):
 
 
 def get_info(ticker):
-    print(ticker)
     info = si.get_quote_table(ticker, dict_result=False)
     info = info.set_index("attribute").T
     return info
